@@ -1,0 +1,23 @@
+----------------------------------------------ICE HRM E-Project Aptech Garden User Manual---------------------
+1. Download the whole project and Unzip it.
+2. Install Vagrant :-https://www.vagrantup.com/downloads.html
+3. Install Vagrant host updater plugin :- https://github.com/cogitatio/vagrant-hostsupdater
+4. Run vagrant up in icehrm root directory (this will download icehrm vagrant image which is ~1 GB)
+Command : vagrant up
+5. Run vagrant ssh to login to the Virtual machine
+Command : vagrant ssh
+6. Install ant build in your VM
+Command : sudo apt-get install ant
+7. Build Icehrm (your icehrm root directory is mapped to /vagrant/ directory in VM)
+Commands: cd /vagrant
+ant buildlocal
+8. Execute table creation scripts
+Commands :
+mysql -udev -pdev dev < /vagrant/core-ext/scripts/icehrmdb.sql
+mysql -udev -pdev dev < /vagrant/core-ext/scripts/icehrm_master_data.sql
+mysql -udev -pdev dev < /vagrant/core-ext/scripts/icehrm_sample_data.sql
+9. Navigate to http://clients.app.dev/dev to load icehrm from VM. (user:admin/pass:admin)
+10. Unit Testing
+Commands : 
+cd /vagrant
+phpunit
